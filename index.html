@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management Software by Arriverr | Complete Solution for Modern Pharmacies</title>
+    <meta name="description" content="Professional pharmacy management software with POS, inventory, HR, FBR integration, and advanced analytics. Secure cloud-based solution for pharmacies in Pakistan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00A896;
+            --primary-dark: #028174;
+            --accent: #05668D;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --text-dark: #1A2332;
+            --text-light: #6B7280;
+            --bg-light: #F8FAFB;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #00A896 0%, #05668D 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(0, 168, 150, 0.05) 0%, rgba(5, 102, 141, 0.05) 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 40px rgba(0, 168, 150, 0.15);
+            --shadow-xl: 0 20px 60px rgba(0, 168, 150, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-subtle);
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 168, 150, 0.15) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            animation-delay: -5s;
+        }
+
+        .shape-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(5, 102, 141, 0.1) 0%, transparent 70%);
+            bottom: -250px;
+            left: -250px;
+            animation-delay: -10s;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            top: 50%;
+            right: 10%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-5deg);
+            }
+            75% {
+                transform: translate(20px, -40px) rotate(3deg);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .brand-text h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 26px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .whatsapp-icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--white);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .hero-icon-wrapper {
+            margin: 0 auto 36px;
+            animation: scaleIn 0.8s ease-out 0.3s both;
+        }
+
+        .hero-icon {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            border-radius: 28px;
+            box-shadow: var(--shadow-xl);
+            object-fit: cover;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 32px;
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .download-btn.primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .download-btn.primary:hover {
+            filter: brightness(1.1);
+            border-color: transparent;
+        }
+
+        .download-icon {
+            width: 26px;
+            height: 26px;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            animation: fadeIn 0.8s ease-out 0.7s both;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .trust-badge svg {
+            width: 20px;
+            height: 20px;
+            color: var(--success);
+        }
+
+        /* Company Info Card */
+        .company-info {
+            margin: -30px auto 80px;
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 28px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-subtle);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--primary);
+        }
+
+        .info-text h4 {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .info-text p {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 2px 0 0;
+        }
+
+        /* Section Title */
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 36px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.15s; }
+        .feature-card:nth-child(3) { animation-delay: 0.2s; }
+        .feature-card:nth-child(4) { animation-delay: 0.25s; }
+        .feature-card:nth-child(5) { animation-delay: 0.3s; }
+        .feature-card:nth-child(6) { animation-delay: 0.35s; }
+        .feature-card:nth-child(7) { animation-delay: 0.4s; }
+        .feature-card:nth-child(8) { animation-delay: 0.45s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .feature-card .description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .feature-list li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--success);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+        }
+
+        .cta-card {
+            background: var(--gradient-primary);
+            padding: 70px 50px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            animation: rotate 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .cta-card p {
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            background: var(--text-dark);
+            color: white;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 40px 0 30px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #00C9B7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .cta-card h3 {
+                font-size: 30px;
+            }
+
+            .cta-card {
+                padding: 50px 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .brand-text h1 {
+                font-size: 18px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .info-card {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .logo {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="icon.png" alt="Pharmacy Management Software Logo" class="logo">
+                    <div class="brand-text">
+                        <h1>Pharmacy Management</h1>
+                        <p>by Arriverr</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/923456703860" class="whatsapp-btn" target="_blank" rel="noopener">
+                    <svg class="whatsapp-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Pharmacy Management Solutions</div>
+            
+            <div class="hero-icon-wrapper">
+                <img src="icon.png" alt="Pharmacy Management Software" class="hero-icon">
+            </div>
+
+            <h2>Comprehensive Pharmacy<br>Software Solution</h2>
+            
+            <p class="hero-subtitle">
+                A complete, secure, and efficient solution for managing inventory, sales, employees, and reporting. Built specifically for modern pharmacies in Pakistan.
+            </p>
+
+            <div class="download-buttons">
+                <a href="https://apps.microsoft.com/detail/9P1B9X893H67?hl=en-us&gl=TJ&ocid=pdpshare" class="download-btn primary" target="_blank" rel="noopener">
+                    <svg class="download-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                    </svg>
+                    Download for Windows
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.arriverr.pharmacy_management&pcampaignid=web_share" class="download-btn" target="_blank" rel="noopener">
+                    <svg class="download-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/>
+                    </svg>
+                    Download for Android
+                </a>
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span>Secure & Encrypted</span>
+                </div>
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                    </svg>
+                    <span>Cloud-Based</span>
+                </div>
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>FBR Compliant</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info Card -->
+    <section class="company-info">
+        <div class="container">
+            <div class="info-card">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <h4>Company</h4>
+                        <p>Arriverr</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <h4>Contact Support</h4>
+                        <p>+92 3456703860</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p>ahmed.mug01@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Key Capabilities</h3>
+                <p class="section-subtitle">Designed to streamline your daily pharmacy operations with powerful features</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1: POS -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(0, 168, 150, 0.1);">
+                        💳
+                    </div>
+                    <h3>Advanced POS</h3>
+                    <p class="description">Efficient Point of Sale system designed for rapid checkout</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Real-time cart calculation</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Tax & Discount handling</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Invoice generation</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Barcode scanner support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2: Inventory -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.1);">
+                        📦
+                    </div>
+                    <h3>Smart Inventory</h3>
+                    <p class="description">Complete control over your stock, suppliers, and batches</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Low stock alerts</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Expiry tracking</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Category management</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Supplier database</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: HR -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(168, 85, 247, 0.1);">
+                        👥
+                    </div>
+                    <h3>HR Management</h3>
+                    <p class="description">Manage staff, roles, and payroll within the application</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Employee Attendance</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Role-based permissions</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Salary payment tracking</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Performance monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4: Reports -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(249, 115, 22, 0.1);">
+                        📊
+                    </div>
+                    <h3>Reports & Analytics</h3>
+                    <p class="description">Data-driven insights to grow your business</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Daily Sales Reports</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Profit & Loss analysis</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Product performance</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Expense tracking</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5: Cloud -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(34, 197, 94, 0.1);">
+                        ☁️
+                    </div>
+                    <h3>Secure Cloud</h3>
+                    <p class="description">Built on Firebase for enterprise-grade security</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Encrypted User Auth</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Cloud Firestore Database</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Automated Backups</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Multi-device sync</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6: Subscription -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(239, 68, 68, 0.1);">
+                        ⭐
+                    </div>
+                    <h3>Subscription Manager</h3>
+                    <p class="description">Built-in handling for software licensing and validity</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Trial period management</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Subscription expiry guards</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Feature locking</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Payment integration</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 7: FBR -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(20, 184, 166, 0.1);">
+                        🏦
+                    </div>
+                    <h3>FBR Pakistan Integration</h3>
+                    <p class="description">Complete Federal Board of Revenue tax compliance</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>FBR-compliant invoice numbering</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Automatic tax calculations</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>QR code verification</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Real-time submission tracking</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 8: Pharmacy Features -->
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(59, 130, 246, 0.1);">
+                        💊
+                    </div>
+                    <h3>Pharmacy-Specific Features</h3>
+                    <p class="description">Advanced medicine management for modern pharmacies</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>FEFO expiry management</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Box/Strip unit handling</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Generic medicine substitutes</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Keyboard shortcuts (F1-F12)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h3>Ready to Transform Your Pharmacy?</h3>
+                    <p>Download now and experience the complete pharmacy management solution. Available for Windows and Android devices.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://apps.microsoft.com/detail/9P1B9X893H67?hl=en-us&gl=TJ&ocid=pdpshare" class="cta-btn" target="_blank" rel="noopener">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                            </svg>
+                            Microsoft Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.arriverr.pharmacy_management&pcampaignid=web_share" class="cta-btn" target="_blank" rel="noopener">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/>
+                            </svg>
+                            Google Play
+                        </a>
+                        <a href="https://wa.me/923456703860" class="cta-btn" target="_blank" rel="noopener">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            WhatsApp Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Pharmacy Management Software</h3>
+                </div>
+                <p class="footer-description">
+                    Empowering pharmacies with cutting-edge technology for better healthcare delivery and business management. Built with care by Arriverr.
+                </p>
+                
+                <div class="footer-divider"></div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Pharmacy Management Software by <a href="mailto:ahmed.mug01@gmail.com" class="footer-link">Arriverr</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
